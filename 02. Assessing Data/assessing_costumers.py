@@ -3,7 +3,7 @@ customers_df.info()
 #It has been found that the quantity and type of data are correct.
 
 #Next, a check will be conducted for duplicate data.
-customers_df.isna().sum()
+print('jumlah duplicate :',customers_df.duplicated().sum())
 #It has been found that there is no duplicate data.
 
 #Next, a check will be conducted for null values.
