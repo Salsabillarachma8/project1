@@ -9,3 +9,6 @@ print('jumlah duplicate :',order_items_df.duplicated().sum())
 #Next, a check will be conducted for null values.
 order_items_df.isna().sum()
 #It has been found that there are no null values.
+
+#Observing the data distribution by looking at the mean, median, etc.
+order_items_df.describe()
