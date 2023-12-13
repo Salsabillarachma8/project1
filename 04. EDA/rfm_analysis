@@ -1,0 +1,17 @@
+#checking table contents
+order_product_mg_df.info()
+
+rfm_df = order_product_mg_df.groupby(by="customer_id", as_index=False).agg({
+    "order_purchase_timestamp": "max", # mengambil tanggal order terakhir
+    "order_id": "nunique", # menghitung jumlah order
+    "price": "sum" # menghitung jumlah revenue yang dihasilkan
+})
+rfm_df.columns = ["customer_id", "max_order_timestamp", "frequency", "monetary"]
+
+# menghitung kapan terakhir pelanggan melakukan transaksi (hari)
+rfm_df["max_order_timestamp"] = rfm_df["max_order_timestamp"].dt.date
+recent_date = orders_df["order_purchase_timestamp"].dt.date.max()
+rfm_df["recency"] = rfm_df["max_order_timestamp"].apply(lambda x: (recent_date - x).days)
+
+rfm_df.drop("max_order_timestamp", axis=1, inplace=True)
+rfm_df.head()
