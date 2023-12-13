@@ -8,8 +8,8 @@ sns.barplot(
     palette=colors
 )
 
-plt.title("3 harga tertinggi product yang di order", loc="center", fontsize=15)
-plt.ylabel(None)
-plt.xlabel(None)
+plt.title("highest product order price", loc="center", fontsize=15)
+plt.ylabel("price", fontsize=10)
+plt.xlabel("product", fontsize=10)
 plt.tick_params(axis='x', labelsize=10)
 plt.show()
